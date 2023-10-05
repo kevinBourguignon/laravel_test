@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LessonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/lesson/{lesson:slug}', [LessonController::class, 'view'])->name('lesson.view');
+Route::get('/author/{author}', [AuthorController::class, 'view'])->name('author.view');
